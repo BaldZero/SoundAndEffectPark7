@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3782205091452059992}
   m_Layer: 0
   m_Name: WallBorderObstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,8 +137,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2733431, y: 1.54451, z: 5.096254}
-  m_Center: {x: 0.030481815, y: 0.272255, z: -0.16314149}
+  m_Size: {x: 0.2733431, y: 0.92151344, z: 5.096254}
+  m_Center: {x: 0.030481815, y: 0.5837533, z: -0.16314149}
 --- !u!54 &3522709907939327840
 Rigidbody:
   m_ObjectHideFlags: 0
