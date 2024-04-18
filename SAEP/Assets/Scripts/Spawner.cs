@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject obstaclePrefab;
+    public GameObject[] obstaclePrefab;
     private float startDelay = 2f;
     private float repeatRate = 2f;
 
@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     {
         //Get the actual PlayerControl script
         playerControlScript = GameObject.Find("Player").GetComponent<PlayerControl>();
-        InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
+        InvokeRepeating("SpawnObstacle", startDelay, Random.Range(1f, 4f));
     }
 
     // Update is called once per frame
@@ -30,7 +30,8 @@ public class Spawner : MonoBehaviour
     {
         if (playerControlScript.gameOver == false)
         {
-            Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
+            int obstacleIndex = Random.Range(0, obstaclePrefab.Length);
+            Instantiate(obstaclePrefab[obstacleIndex], spawnPos, obstaclePrefab[obstacleIndex].transform.rotation);
         }
         
 

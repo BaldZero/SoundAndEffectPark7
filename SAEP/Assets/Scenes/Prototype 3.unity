@@ -256,7 +256,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e98b242420f2d41ba1ef3ccd8ff0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1335200174946805239, guid: 1d377d4fc6a1ce642a4a61ab7ff3a1aa, type: 3}
+  obstaclePrefab:
+  - {fileID: 1335200174946805239, guid: 1d377d4fc6a1ce642a4a61ab7ff3a1aa, type: 3}
+  - {fileID: 6535521248949419512, guid: 2a1f650e6e36d024b9ec5024374025d3, type: 3}
+  - {fileID: 3624511611233663952, guid: 93b7372178aeebe4f8bebcffd328c3e9, type: 3}
 --- !u!4 &217549934
 Transform:
   m_ObjectHideFlags: 0
@@ -557,6 +560,8 @@ MonoBehaviour:
   crashSound: {fileID: 8300000, guid: 4bcde6de2166e41e284ec46d8a01fb90, type: 3}
   isOnGround: 1
   gameOver: 0
+  secondJump: 0
+  secondJumpForce: 500
 --- !u!65 &711273643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -805,6 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e0de67ed3d0a847b356eb25926234a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 30
 --- !u!114 &835818923
 MonoBehaviour:
   m_ObjectHideFlags: 0

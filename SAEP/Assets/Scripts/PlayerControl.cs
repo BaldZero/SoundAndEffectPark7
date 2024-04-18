@@ -16,6 +16,8 @@ public class PlayerControl : MonoBehaviour
     public AudioClip crashSound;
     public bool isOnGround = true;
     public bool gameOver = false;
+    public bool secondJump;
+    public float secondJumpForce = 300f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //player jumps when space is pressed
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -35,6 +38,16 @@ public class PlayerControl : MonoBehaviour
             playerAnim.SetTrigger("Jump_trig");
             dirtRun.Stop();
             playerAudio.PlayOneShot(jumpSound, 1.0f);
+            secondJump = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && secondJump && !gameOver)
+        {
+            playerRb.AddForce(Vector3.up * secondJumpForce, ForceMode.Impulse);
+            isOnGround = false;
+            playerAnim.SetTrigger("Jump_trig");
+            dirtRun.Stop();
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
+            secondJump = false;
         }
 
     }

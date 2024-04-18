@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
-    private float speed = 30;
+    public float speed = 30;
     private PlayerControl playerControllerScript;
 
-    private float leftBound = -15; 
+    private float dashTime = 1.5f;
+    private float leftBound = -15;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +28,17 @@ public class MoveLeft : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            Time.timeScale = dashTime;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+
+
+ 
     }
 }
