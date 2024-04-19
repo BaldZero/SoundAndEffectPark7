@@ -18,6 +18,8 @@ public class PlayerControl : MonoBehaviour
     public bool gameOver = false;
     public bool secondJump;
     public float secondJumpForce = 300f;
+
+     public bool dashSpeed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,18 @@ public class PlayerControl : MonoBehaviour
             dirtRun.Stop();
             playerAudio.PlayOneShot(jumpSound, 1.0f);
             secondJump = false;
+        }
+
+        if(Input.GetKey(KeyCode.D))
+        {
+            dashSpeed = true;
+            playerAnim.SetFloat("Speed_Multiplier", 2f);
+
+        }
+        else if(dashSpeed)
+        {
+            dashSpeed = false;
+            playerAnim.SetFloat("Speed_Multiplier", 1f);
         }
 
     }
