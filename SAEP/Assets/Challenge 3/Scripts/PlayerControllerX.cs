@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerControllerX : MonoBehaviour
 {
     public bool gameOver;
 
-    public float floatForce;
+    public float floatForce = 50f;
     private float gravityModifier = 1.5f;
     private Rigidbody playerRb;
 
+    public float bounce = 5;
+
+    public float topBound = 15f;
     public ParticleSystem explosionParticle;
     public ParticleSystem fireworksParticle;
 
@@ -23,6 +27,7 @@ public class PlayerControllerX : MonoBehaviour
     {
         Physics.gravity *= gravityModifier;
         playerAudio = GetComponent<AudioSource>();
+        playerRb = GetComponent<Rigidbody>();   
 
         // Apply a small upward force at the start of the game
         playerRb.AddForce(Vector3.up * 5, ForceMode.Impulse);
@@ -30,12 +35,17 @@ public class PlayerControllerX : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // While space is pressed and player is low enough, float up
         if (Input.GetKey(KeyCode.Space) && !gameOver)
         {
             playerRb.AddForce(Vector3.up * floatForce);
+        }
+
+        if (transform.position.y >= topBound)
+        {
+            transform.position = new Vector3(transform.position.x, topBound, transform.position.z);
         }
     }
 
@@ -58,6 +68,11 @@ public class PlayerControllerX : MonoBehaviour
             playerAudio.PlayOneShot(moneySound, 1.0f);
             Destroy(other.gameObject);
 
+        }
+
+        if (other.gameObject.CompareTag("Ground") && !gameOver)
+        {
+            playerRb.AddForce(Vector3.up * bounce, ForceMode.Impulse);
         }
 
     }
